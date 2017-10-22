@@ -1,13 +1,20 @@
 import React, { PureComponent } from 'react';
-import Climbs from './Climbs';
+import { connect } from 'react-redux';
+import Sets from './Sets';
 import './Start.css';
 
 class Start extends PureComponent {
   render() {
     return (
-      <Climbs climbs={[]} />
+      <Sets sets={this.props.sets} />
     );
   }
 }
 
-export default Start;
+function mapStateToProps(state) {
+  return {
+    sets: state.sets,
+  };
+}
+
+export default connect(mapStateToProps)(Start);

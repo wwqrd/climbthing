@@ -1,0 +1,15 @@
+.sets {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.set {
+  display: flex;
+  width: 100%;
+}
+
+.set-col {
+  display: flex;
+  flex: 0 1 30%;
+}

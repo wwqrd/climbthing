@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { find, sortBy, reverse } from 'lodash';
+import { bindActionCreators } from 'redux';
+import { find, sortBy } from 'lodash';
+import { actionCreators as setActions } from '../ducks/sets';
 import './Set.css';
 
 const Route = ({ id, attempts, complete, onAttempt, onComplete }) => (
@@ -14,10 +16,12 @@ const Route = ({ id, attempts, complete, onAttempt, onComplete }) => (
 class Set extends PureComponent {
   onAttempt(id) {
     console.log('attempt');
+    this.props.attemptRoute(this.props.id, id);
   }
 
   onComplete(id) {
-    console.log('complete');
+    console.log('complete', this.props.id, id);
+    this.props.completeRoute(this.props.id, id);
   }
 
   render() {
@@ -49,14 +53,17 @@ class Set extends PureComponent {
 function mapStateToProps(state, props) {
   const set = find(state.sets, ['id', props.match.params.id]);
 
-  // naughty
-  const routes = reverse(sortBy(set.routes, route => ( route.attempts - (route.complete && 9999) )));
+  const routes = sortBy(set.routes, 'complete');
 
   return {
-    color: set.color,
-    date: set.date,
+    ...set,
     routes,
   };
 }
 
-export default connect(mapStateToProps)(Set);
+const mapDispatchToProps = dispatch => ({
+  attemptRoute: bindActionCreators(setActions.attemptRoute, dispatch),
+  completeRoute: bindActionCreators(setActions.completeRoute, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Set);

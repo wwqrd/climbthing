@@ -1,29 +1,19 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers, compose } from 'redux';
+import { persistStore, autoRehydrate } from 'redux-persist';
+import sets from './ducks/sets';
 
-const demoState = {
-  sets: [
-    {
-      id: '1',
-      color: 'grey',
-      date: new Date().toString(),
-      routes: [
-        { id: '1', attempts: 0, complete: false },
-        { id: '2', attempts: 2, complete: false },
-      ]
-    },
-      {
-        id: '2',
-        color: 'purple',
-        date: new Date().toString(),
-        routes: [
-          { id: '1', attempts: 0, complete: false },
-          { id: '2', attempts: 2, complete: false },
-          { id: '3', attempts: 1, complete: true },
-        ]
-      },
-  ],
-};
+const root = combineReducers({
+  sets
+});
 
-const store = createStore(() => demoState);
+const store = createStore(
+  root,
+  undefined,
+  compose(
+    autoRehydrate()
+  )
+);
+
+persistStore(store);
 
 export default store;

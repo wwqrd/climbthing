@@ -8,7 +8,7 @@ const initialState = [
   {
     id: '1',
     color: 'grey',
-    date: new Date().toString(),
+    date: moment().format("MMM Do YY"),
     routes: [
       { id: '1', attempts: 0, complete: false },
       { id: '2', attempts: 2, complete: false },
@@ -17,7 +17,7 @@ const initialState = [
   {
     id: '2',
     color: 'purple',
-    date: new Date().toString(),
+    date: moment().format("MMM Do YY"),
     routes: [
       { id: '1', attempts: 0, complete: false },
       { id: '2', attempts: 2, complete: false },

@@ -4,12 +4,13 @@
   width: 100%;
 }
 
-.set {
+.sets__set {
   display: flex;
+  flex-direction: row;
   width: 100%;
 }
 
-.set-col {
+.sets__set-col {
   display: flex;
   flex: 0 1 30%;
 }

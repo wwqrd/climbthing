@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Sets from '../components/Sets';
-import { actionCreators as setActions } from '../ducks/sets';
 import './Home.css';
 
 class Home extends PureComponent {

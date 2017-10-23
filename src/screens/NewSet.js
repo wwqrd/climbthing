@@ -59,7 +59,7 @@ class NewSet extends PureComponent {
     this.props.addSet({
       color: this.state.set.color,
       date: this.state.set.date,
-      routes: parseInt(this.state.set.routes),
+      routes: parseInt(this.state.set.routes, 10),
     });
     this.setState({ saved: true });
   }

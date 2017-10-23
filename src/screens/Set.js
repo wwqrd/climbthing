@@ -2,9 +2,11 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { find, sortBy } from 'lodash';
+import cx from 'classnames';
 import Route from '../components/Route';
 import { actionCreators as setActions } from '../ducks/sets';
 import './Set.css';
+import '../components/Hold.css';
 
 class Set extends PureComponent {
   onAttempt(id) {
@@ -26,8 +28,13 @@ class Set extends PureComponent {
 
     return (
       <div className="set">
-        Color: {color}
-        Date: {date}
+        <div>
+          <strong>Hold color</strong><br /> <div className={cx('color-option', `color-option--${color}`)}></div>
+        </div>
+        <div>
+          <strong>Date set:</strong><br />
+          {date}
+        </div>
         <div className="set__routes">
           {routes.map(route => (
             <Route

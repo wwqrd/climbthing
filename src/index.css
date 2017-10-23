@@ -12,3 +12,12 @@ input, button {
   outline: none;
   border-radius: 1px;
 }
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+    color: black;
+}

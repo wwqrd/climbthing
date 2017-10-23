@@ -9,8 +9,8 @@ class Sets extends PureComponent {
       <div className="sets">
         <div className="sets__set">
           <div className="sets__set-col sets__set-color"></div>
-          <div className="sets__set-col sets__set-date">Date</div>
-          <div className="sets__set-col sets__set-routes">Routes</div>
+          <div className="sets__set-col sets__set-date"><strong>Date set</strong></div>
+          <div className="sets__set-col sets__set-routes"><strong># of Routes</strong></div>
         </div>
         {this.props.sets.map(Set)}
       </div>

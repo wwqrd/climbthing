@@ -6,6 +6,7 @@ import moment from 'moment';
 import cx from 'classnames';
 import { actionCreators as setActions } from '../ducks/sets';
 import './NewSet.css';
+import '../components/Hold.css';
 
 const colorOptions = [
   'grey',

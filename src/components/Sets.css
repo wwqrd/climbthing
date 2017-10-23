@@ -13,4 +13,6 @@
 .sets__set-col {
   display: flex;
   flex: 0 1 30%;
+  align-items: center;
+  margin-top: 10px;
 }

@@ -1,0 +1,18 @@
+.sets {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sets__set {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.sets__set-col {
+  display: flex;
+  flex: 0 1 30%;
+  align-items: center;
+  margin-top: 10px;
+}

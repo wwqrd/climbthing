@@ -1,15 +1,5 @@
-.view-set {
+.set {
   display: flex;
   flex-direction: column;
   width: 100%;
-}
-
-.route {
-  display: flex;
-  width: 100%;
-}
-
-.route-col {
-  display: flex;
-  flex: 0 1 30%;
 }

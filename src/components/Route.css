@@ -1,0 +1,9 @@
+.route {
+  display: flex;
+  width: 100%;
+}
+
+.route-col {
+  display: flex;
+  flex: 0 1 30%;
+}

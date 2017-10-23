@@ -3,18 +3,18 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { find, sortBy } from 'lodash';
 import cx from 'classnames';
-import Route from '../components/Route';
+import Routes from '../components/Routes';
 import { actionCreators as setActions } from '../ducks/sets';
 import './Set.css';
 import '../components/Hold.css';
 
 class Set extends PureComponent {
-  onAttempt(id) {
+  onAttempt = (id) => {
     console.log('attempt');
     this.props.attemptRoute(this.props.id, id);
   }
 
-  onComplete(id) {
+  onComplete = (id) => {
     console.log('complete', this.props.id, id);
     this.props.completeRoute(this.props.id, id);
   }
@@ -36,14 +36,12 @@ class Set extends PureComponent {
           {date}
         </div>
         <div className="set__routes">
-          {routes.map(route => (
-            <Route
-              key={route.id}
-              {...route}
-              onAttempt={() => this.onAttempt(route.id)}
-              onComplete={() => this.onComplete(route.id)}
-            />
-          ))}
+          <div className="route">
+            <div className="route-heading">Name</div>
+            <div className="route-heading">Attempts</div>
+            <div className="route-heading">Completed</div>
+          </div>
+          <Routes routes={routes} onAttempt={this.onAttempt} onComplete={this.onComplete} />
         </div>
       </div>
     );

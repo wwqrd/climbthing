@@ -1,4 +1,5 @@
 import React from 'react';
+import './Route.css';
 
 const Route = ({ name, attempts, complete, onAttempt, onComplete }) => (
   <div className="route">

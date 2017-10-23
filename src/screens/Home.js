@@ -22,9 +22,7 @@ class Home extends PureComponent {
     return (
       <div className="home">
         { this.state.addSet && <Redirect to="/set/new" /> }
-        <div className="home__add-new" onClick={this.onAddSet}>
-          Add new set
-        </div>
+        <button className="home__add-new" onClick={this.onAddSet}>Create new set</button>
         <div className="home__sets" >
           <Sets sets={this.props.sets} />
         </div>

@@ -83,7 +83,7 @@ class NewSet extends PureComponent {
           <button>+</button>
         </label>
 
-        <button onClick={this.onSave}>Save</button>
+        <button onClick={this.onSave}>Save set</button>
       </div>
     );
   }

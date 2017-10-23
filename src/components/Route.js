@@ -1,11 +1,11 @@
 import React from 'react';
-import './Route.css';
+import cx from 'classnames';
 
 const Route = ({ name, attempts, complete, onAttempt, onComplete }) => (
-  <div className="route">
-    <div className="route-col route-id">{name}</div>
-    <div className="route-col route-attempts" onClick={onAttempt}>{attempts}</div>
-    <div className="route-col route-complete" onClick={onComplete}>{complete ? 'complete' : ''}</div>
+  <div className={cx('routes__route', { 'routes__route--completed': complete })}>
+    <div className="routes__route-col routes__route-name">{name}</div>
+    <div className="routes__route-col routes__route-attempts" onClick={onAttempt}>{attempts}</div>
+    <div className="routes__route-col routes__route-complete" onClick={onComplete}>{complete ? 'complete' : ''}</div>
   </div>
 );
 

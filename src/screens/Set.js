@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import { find, sortBy } from 'lodash';
 import cx from 'classnames';
 import Routes from '../components/Routes';
@@ -28,19 +29,17 @@ class Set extends PureComponent {
 
     return (
       <div className="set">
-        <div>
-          <strong>Hold color</strong><br /> <div className={cx('color-option', `color-option--${color}`)}></div>
-        </div>
-        <div>
-          <strong>Date set:</strong><br />
-          {date}
+        <Link to="/"><button>Back</button></Link>
+        <div className="set__meta">
+          <div className="set__meta-item">
+            <strong>Hold color</strong><br /> <div className={cx('color-option', `color-option--${color}`)}></div>
+          </div>
+          <div className="set__meta-item">
+            <strong>Date</strong><br />
+            {date}
+          </div>
         </div>
         <div className="set__routes">
-          <div className="route">
-            <div className="route-heading">Name</div>
-            <div className="route-heading">Attempts</div>
-            <div className="route-heading">Completed</div>
-          </div>
           <Routes routes={routes} onAttempt={this.onAttempt} onComplete={this.onComplete} />
         </div>
       </div>

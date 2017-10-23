@@ -1,18 +1,36 @@
-.sets {
+.routes {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.sets__set {
+.routes__route {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
 
-.sets__set-col {
+.routes__route--completed {
+  color: #CCC;
+}
+
+.routes__route-col {
   display: flex;
-  flex: 0 1 30%;
+  flex: 0 1 33%;
   align-items: center;
-  margin-top: 10px;
+  justify-content: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #EEE;
+}
+
+.routes__route-name {
+  flex: 0 1 20%;
+}
+
+.routes__route-attempts {
+  flex: 0 1 40%;
+}
+
+.routes__route-complete {
+  flex: 0 1 40%;
 }

@@ -12,7 +12,9 @@
 
 .sets__set-col {
   display: flex;
-  flex: 0 1 30%;
+  flex: 0 1 33%;
   align-items: center;
-  margin-top: 10px;
+  justify-content: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #EEE;
 }

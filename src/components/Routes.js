@@ -10,7 +10,7 @@ class Routes extends PureComponent {
         <div className="routes__route">
           <div className="routes__route-col routes__route-name"><strong>Name</strong></div>
           <div className="routes__route-col routes__route-attempts"><strong>Attempts</strong></div>
-          <div className="routes__route-col routes__route-complete"><strong>Completed</strong></div>
+          <div className="routes__route-col route-complete"><strong>Completed</strong></div>
         </div>
         {this.props.routes.map((route) => (
           <Route

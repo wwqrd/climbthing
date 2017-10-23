@@ -3,3 +3,12 @@
   flex-direction: column;
   width: 100%;
 }
+
+.set__meta {
+  margin-top: 20px;
+  display: flex;
+}
+
+.set__meta-item {
+  flex: 0 1 50%;
+}

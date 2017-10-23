@@ -46,9 +46,13 @@ class Set extends PureComponent {
 function mapStateToProps(state, props) {
   const set = find(state.sets, ['id', props.match.params.id]);
 
-  console.log(state.sets);
-
-  console.log('set', set);
+  if (!set) {
+    return {
+      color: null,
+      date: null,
+      routes: [],
+    };
+  }
 
   const routes = sortBy(set.routes, 'complete');
 

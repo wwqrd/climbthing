@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
-import Routes from './Routes';
-import store from './store';
+import { Switch, Route, Link } from 'react-router-dom';
+import Home from './screens/Home';
+import Set from './screens/Set';
+import EditSet from './screens/EditSet';
+import NewSet from './screens/NewSet';
+
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <div className="App">
-          <Routes />
-        </div>
-      </Provider>
+      <div className="App">
+        <Link to="/"><h1>Climbthing</h1></Link>
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route path="/set/new" component={NewSet}/>
+          <Route path="/set/:id/edit" component={EditSet}/>
+          <Route path="/set/:id" component={Set}/>
+        </Switch>
+      </div>
     );
   }
 }

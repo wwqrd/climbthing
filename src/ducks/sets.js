@@ -17,18 +17,6 @@ const blankRoutes = (routes) =>
   }));
 
 const initialState = [
-  {
-    id: '1',
-    color: 'grey',
-    date: moment().format("Do MMM"),
-    routes: blankRoutes(7),
-  },
-  {
-    id: '2',
-    color: 'purple',
-    date: moment().format("Do MMM"),
-    routes: blankRoutes(5),
-  },
 ];
 
 export default function reducer(state = initialState, action = {}) {

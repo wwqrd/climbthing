@@ -1,19 +1,20 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
+import Set from './Set';
 import './Sets.css';
-
-const Set = ({ id, color, date, routes }) => (
-  <Link className="sets__set" key={id} to={`/set/${id}`}>
-    <div className="sets__set-col sets__set-color">{color}</div>
-    <div className="sets__set-col sets__set-date">{date}</div>
-    <div className="sets__set-col sets__set-routes">{routes.length}</div>
-  </Link>
-);
 
 class Sets extends PureComponent {
   render() {
     return (
       <div className="sets">
+        <div className="sets__set">
+          <div className="sets__set-col sets__set-color"></div>
+          <div className="sets__set-col sets__set-date">Date</div>
+          <div className="sets__set-col sets__set-routes">Routes</div>
+        </div>
+        <div className="sets__add-new_set" onClick={() => {}}>
+        Add new set
+        </div>
         {this.props.sets.map(Set)}
       </div>
     );

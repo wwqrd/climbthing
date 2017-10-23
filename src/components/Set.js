@@ -1,69 +1,12 @@
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { find, sortBy } from 'lodash';
-import { actionCreators as setActions } from '../ducks/sets';
-import './Set.css';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Route = ({ id, attempts, complete, onAttempt, onComplete }) => (
-  <div className="route">
-    <div className="route-col route-id">{id}</div>
-    <div className="route-col route-attempts" onClick={onAttempt}>{attempts}</div>
-    <div className="route-col route-complete" onClick={onComplete}>{complete ? 'complete' : ''}</div>
-  </div>
+const Set = ({ id, color, date, routes }) => (
+  <Link className="sets__set" key={id} to={`/set/${id}`}>
+    <div className="sets__set-col sets__set-color">{color}</div>
+    <div className="sets__set-col sets__set-date">{date}</div>
+    <div className="sets__set-col sets__set-routes">{routes.length}</div>
+  </Link>
 );
 
-class Set extends PureComponent {
-  onAttempt(id) {
-    console.log('attempt');
-    this.props.attemptRoute(this.props.id, id);
-  }
-
-  onComplete(id) {
-    console.log('complete', this.props.id, id);
-    this.props.completeRoute(this.props.id, id);
-  }
-
-  render() {
-    const {
-      color,
-      date,
-      routes,
-    } = this.props;
-
-    return (
-      <div className="set">
-        Color: {color}
-        Date: {date}
-        <div className="set__routes">
-          {routes.map(route => (
-            <Route
-              key={route.id}
-              {...route}
-              onAttempt={() => this.onAttempt(route.id)}
-              onComplete={() => this.onComplete(route.id)}
-            />
-          ))}
-        </div>
-      </div>
-    );
-  }
-}
-
-function mapStateToProps(state, props) {
-  const set = find(state.sets, ['id', props.match.params.id]);
-
-  const routes = sortBy(set.routes, 'complete');
-
-  return {
-    ...set,
-    routes,
-  };
-}
-
-const mapDispatchToProps = dispatch => ({
-  attemptRoute: bindActionCreators(setActions.attemptRoute, dispatch),
-  completeRoute: bindActionCreators(setActions.completeRoute, dispatch),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Set);
+export default Set;

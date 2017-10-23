@@ -4,13 +4,15 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import Start from './components/Start';
-import Set from './components/Set';
+import Home from './screens/Home';
+import Set from './screens/Set';
+import EditSet from './screens/EditSet';
 
 const Routes = () => (
   <Router>
     <Switch>
-      <Route exact path="/" component={Start}/>
+      <Route exact path="/" component={Home}/>
+      <Route path="/set/:id/edit" component={EditSet}/>
       <Route path="/set/:id" component={Set}/>
     </Switch>
   </Router>

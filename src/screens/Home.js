@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import Sets from './Sets';
-import './Start.css';
+import Sets from '../components/Sets';
+import './Home.css';
 
-class Start extends PureComponent {
+class Home extends PureComponent {
   render() {
     return (
       <Sets sets={this.props.sets} />
@@ -17,4 +17,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Start);
+export default connect(mapStateToProps)(Home);

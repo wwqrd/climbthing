@@ -1,8 +1,12 @@
 import moment from 'moment';
+import { uniqueId, fill } from 'lodash';
 
-const ADD_SET = 'ADD_SET';
-const ATTEMPT_ROUTE = 'ATTEMPT_ROUTE';
-const COMPLETE_ROUTE = 'COMPLETE_ROUTE';
+const ADD_SET = Symbol('ADD_SET');
+const UPDATE_SET = Symbol('UPDATE_SET');
+const ATTEMPT_ROUTE = Symbol('ATTEMPT_ROUTE');
+const COMPLETE_ROUTE = Symbol('COMPLETE_ROUTE');
+
+const date = moment().format('YYMMDD');
 
 const initialState = [
   {
@@ -10,8 +14,8 @@ const initialState = [
     color: 'grey',
     date: moment().format("MMM Do YY"),
     routes: [
-      { id: '1', attempts: 0, complete: false },
-      { id: '2', attempts: 2, complete: false },
+      { id: '1', name: '1', attempts: 0, complete: false },
+      { id: '2', name: '2', attempts: 2, complete: false },
     ]
   },
   {
@@ -19,26 +23,43 @@ const initialState = [
     color: 'purple',
     date: moment().format("MMM Do YY"),
     routes: [
-      { id: '1', attempts: 0, complete: false },
-      { id: '2', attempts: 2, complete: false },
-      { id: '3', attempts: 1, complete: true },
+      { id: '1', name: '1', attempts: 0, complete: false },
+      { id: '2', name: '2', attempts: 2, complete: false },
+      { id: '3', name: '3', attempts: 1, complete: true },
     ]
   },
 ];
 
+const emptyRoutes = (routes) =>
+  fill(new Array(routes), {}).map((_, index) => ({
+    id: uniqueId(),
+    name: index,
+    attempts: 0,
+    complete: false,
+  }));
+
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case ADD_SET:
+      console.log(action);
       return [
         ...state,
         {
-          id: new Date().getTime(),
+          id: uniqueId(`${date}_`),
           color: action.color,
-          date: moment().format("MMM Do YY"),
-          routes: [
-          ]
+          date: action.date,
+          routes: emptyRoutes(action.routes),
         }
       ];
+    case UPDATE_SET:
+      return state.map((set) => {
+        if (set.id !== action.setId) { return set; }
+
+        return {
+          ...set,
+          ...action.set,
+        };
+      });
     case ATTEMPT_ROUTE:
       return state.map((set) => {
         if (set.id !== action.setId) { return set; }
@@ -80,10 +101,11 @@ export default function reducer(state = initialState, action = {}) {
   }
 }
 
-function addSet(color, routes) {
+function addSet({ color, routes, date }) {
   return {
     type: ADD_SET,
     color,
+    date,
     routes,
   };
 }

@@ -12,9 +12,6 @@ class Sets extends PureComponent {
           <div className="sets__set-col sets__set-date">Date</div>
           <div className="sets__set-col sets__set-routes">Routes</div>
         </div>
-        <div className="sets__add-new_set" onClick={() => {}}>
-        Add new set
-        </div>
         {this.props.sets.map(Set)}
       </div>
     );

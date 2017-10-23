@@ -1,5 +1,14 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Helvetica Neu', 'Calibri', sans-serif;
+  font-size: 18px;
+}
+
+input, button {
+  font-size: 18px;
+  padding: 5px 8px;
+  border: 1px solid silver;
+  outline: none;
+  border-radius: 1px;
 }

@@ -3,14 +3,23 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
+import cx from 'classnames';
 import { actionCreators as setActions } from '../ducks/sets';
-import './Set.css';
+import './NewSet.css';
 
 const colorOptions = [
   'grey',
+  'wasp',
+  'seagul',
+  'watermelon',
   'orange',
   'pink',
+  'purple',
+  'polka',
+  'yurple',
   'black',
+  'white',
+  'woody',
 ];
 
 class NewSet extends PureComponent {
@@ -51,13 +60,16 @@ class NewSet extends PureComponent {
 
   render() {
     return (
-      <div className="set">
+      <div className="new-set">
         { this.state.saved && <Redirect to="/" /> }
-        <div>
-          Color
-          <div>
+        <div className="new-set__property">
+          <span className="new-set__label">Color</span>
+          <div className="color-options">
             {colorOptions.map((color) => (
-              <label key={color}>
+              <label
+                key={color}
+                className={cx('color-option', `color-option--${color}`, {'color-option--selected': (this.state.set.color === color)})}
+              >
                 <input
                   type="radio"
                   name="color[]"
@@ -71,19 +83,19 @@ class NewSet extends PureComponent {
           </div>
         </div>
 
-        <label>
-          Date
+        <label className="new-set__property">
+          <span className="new-set__label">Date</span>
           <input type="text" name="date" value={this.state.set.date} onChange={this.onChange} />
         </label>
 
-        <label>
-          Routes
-          <button>-</button>
+        <label className="new-set__property">
+          <span className="new-set__label">Routes</span>
           <input type="text" name="routes" value={this.state.set.routes} onChange={this.onChange} />
-          <button>+</button>
         </label>
 
-        <button onClick={this.onSave}>Save set</button>
+        <div className="new-set__property">
+          <button onClick={this.onSave}>Save set</button>
+        </div>
       </div>
     );
   }

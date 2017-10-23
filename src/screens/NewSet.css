@@ -1,0 +1,89 @@
+.new-set {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.new-set__property {
+  margin: 20px 0 0;
+}
+
+.new-set__label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.color-options {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.color-option {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  overflow: hidden;
+  text-indent: -999px;
+  border-radius: 40px;
+  position: relative;
+  border: 5px solid white;
+}
+
+.color-option--selected {
+  border-color: black;
+}
+
+.color-option--grey {
+  background-color: grey;
+}
+.color-option--wasp {
+  background-color: yellow;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, black 10px, black 20px);
+}
+.color-option--seagul {
+  background-color: blue;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, white 10px, white 20px);
+}
+.color-option--watermelon {
+  background-color: pink;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, green 10px, green 20px);
+}
+.color-option--orange {
+  background-color: orange;
+}
+.color-option--pink {
+  background-color: pink;
+}
+.color-option--purple {
+  background-color: purple;
+}
+.color-option--polka {
+  background-color: yellow;
+  background-image: radial-gradient(black 25%, transparent 26%), radial-gradient(black 25%, transparent 26%);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px, 10px;
+}
+.color-option--yurple {
+  background-color: purple;
+  background-image: radial-gradient(black 25%, transparent 26%), radial-gradient(black 25%, transparent 26%);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px, 10px;
+}
+.color-option--black {
+  background-color: black;
+}
+.color-option--black.color-option--selected {
+  border-color: silver;
+}
+.color-option--white {
+  background-color: silver;
+}
+.color-option--woody {
+  background-color: brown;
+}
+
+.color-option input {
+  display: none;
+}

@@ -21,7 +21,7 @@ class NewSet extends PureComponent {
       saved: false,
       set: {
         color: null,
-        date: moment().format('DD MM YY'),
+        date: moment().format('Do MMM'),
         routes: 0,
       }
     };

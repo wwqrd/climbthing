@@ -1,54 +1,46 @@
 import moment from 'moment';
-import { uniqueId, fill } from 'lodash';
+import { fill } from 'lodash';
+import uniqueId from '../utils/uniqueId';
 
 const ADD_SET = Symbol('ADD_SET');
 const UPDATE_SET = Symbol('UPDATE_SET');
 const ATTEMPT_ROUTE = Symbol('ATTEMPT_ROUTE');
 const COMPLETE_ROUTE = Symbol('COMPLETE_ROUTE');
 
-const date = moment().format('YYMMDD');
+const blankRoutes = (routes) =>
+  fill(new Array(routes), {}).map((_, index) => ({
+    id: uniqueId(),
+    name: index + 1,
+    attempts: 0,
+    lastAttemptDate: null,
+    complete: false,
+  }));
 
 const initialState = [
   {
     id: '1',
     color: 'grey',
-    date: moment().format("MMM Do YY"),
-    routes: [
-      { id: '1', name: '1', attempts: 0, complete: false },
-      { id: '2', name: '2', attempts: 2, complete: false },
-    ]
+    date: moment().format("Do MMM"),
+    routes: blankRoutes(7),
   },
   {
     id: '2',
     color: 'purple',
-    date: moment().format("MMM Do YY"),
-    routes: [
-      { id: '1', name: '1', attempts: 0, complete: false },
-      { id: '2', name: '2', attempts: 2, complete: false },
-      { id: '3', name: '3', attempts: 1, complete: true },
-    ]
+    date: moment().format("Do MMM"),
+    routes: blankRoutes(5),
   },
 ];
-
-const emptyRoutes = (routes) =>
-  fill(new Array(routes), {}).map((_, index) => ({
-    id: uniqueId(),
-    name: index,
-    attempts: 0,
-    complete: false,
-  }));
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case ADD_SET:
-      console.log(action);
       return [
         ...state,
         {
-          id: uniqueId(`${date}_`),
+          id: uniqueId(),
           color: action.color,
           date: action.date,
-          routes: emptyRoutes(action.routes),
+          routes: blankRoutes(action.routes),
         }
       ];
     case UPDATE_SET:
@@ -69,6 +61,7 @@ export default function reducer(state = initialState, action = {}) {
 
           return {
             ...route,
+            lastAttemptDate: moment().unix(),
             attempts: route.attempts += 1,
           }
         });
@@ -87,6 +80,7 @@ export default function reducer(state = initialState, action = {}) {
 
           return {
             ...route,
+            lastAttemptDate: !route.complete === true ? moment().unix() : route.lastAttemptDate,
             complete: !route.complete,
           }
         });

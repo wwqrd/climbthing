@@ -31,7 +31,7 @@ class NewSet extends PureComponent {
       set: {
         color: null,
         date: moment().format('Do MMM'),
-        routes: 0,
+        routes: null,
       }
     };
   }
@@ -50,6 +50,11 @@ class NewSet extends PureComponent {
   }
 
   onSave = () => {
+    if (this.state.set.color === null || this.state.set.date === '' || this.state.set.routes === '') {
+      this.setState({ error: 'Select a hold color, enter a set date, and number of routes.' });
+      return;
+    }
+
     this.props.addSet({
       color: this.state.set.color,
       date: this.state.set.date,
@@ -62,8 +67,9 @@ class NewSet extends PureComponent {
     return (
       <div className="new-set">
         { this.state.saved && <Redirect to="/" /> }
+        { this.state.error && <div className="new-set__error">{this.state.error}</div> }
         <div className="new-set__property">
-          <span className="new-set__label">Color</span>
+          <span className="new-set__label">Hold color</span>
           <div className="color-options">
             {colorOptions.map((color) => (
               <label
@@ -84,12 +90,12 @@ class NewSet extends PureComponent {
         </div>
 
         <label className="new-set__property">
-          <span className="new-set__label">Date</span>
+          <span className="new-set__label">Date set</span>
           <input type="text" name="date" value={this.state.set.date} onChange={this.onChange} />
         </label>
 
         <label className="new-set__property">
-          <span className="new-set__label">Routes</span>
+          <span className="new-set__label">Number of routes</span>
           <input type="text" name="routes" value={this.state.set.routes} onChange={this.onChange} />
         </label>
 

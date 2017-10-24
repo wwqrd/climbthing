@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
-import { find, sortBy } from 'lodash';
+import { find } from 'lodash';
 import cx from 'classnames';
 import Routes from '../components/Routes';
 import { actionCreators as setActions } from '../ducks/sets';
@@ -58,11 +58,8 @@ function mapStateToProps(state, props) {
     };
   }
 
-  const routes = sortBy(set.routes, 'complete');
-
   return {
     ...set,
-    routes,
   };
 }
 

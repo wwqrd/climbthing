@@ -14,7 +14,8 @@
   color: #CCC;
 }
 
-.routes__route-col {
+.routes__route-col,
+.routes__route-heading {
   display: flex;
   flex: 0 1 33%;
   align-items: center;
@@ -33,4 +34,14 @@
 
 .routes__route-complete {
   flex: 0 1 40%;
+}
+
+.routes__route-col.routes__route-complete {
+  background-color: #E7E7E7;
+  color: #CCC;
+}
+
+.routes__route--completed .routes__route-col.routes__route-complete {
+  background-color: #80CC80;
+  color: #FFF;
 }

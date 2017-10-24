@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { find } from 'lodash';
 import cx from 'classnames';
 import Routes from '../components/Routes';
@@ -10,14 +10,33 @@ import './Set.css';
 import '../components/Hold.css';
 
 class Set extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = { deleted: false };
+  }
+
   onAttempt = (id) => {
-    console.log('attempt');
     this.props.attemptRoute(this.props.id, id);
   }
 
   onComplete = (id) => {
-    console.log('complete', this.props.id, id);
     this.props.completeRoute(this.props.id, id);
+  }
+
+  onDeattempt = (id) => {
+    this.props.deattemptRoute(this.props.id, id);
+  }
+
+  onUncomplete = (id) => {
+    this.props.uncompleteRoute(this.props.id, id);
+  }
+
+  onDeleteSet = () => {
+    if(window.confirm('Are you sure?')) {
+      this.props.deleteSet(this.props.id);
+      this.setState({ deleted: true });
+    }
   }
 
   render() {
@@ -29,6 +48,7 @@ class Set extends PureComponent {
 
     return (
       <div className="set">
+        { this.state.deleted && <Redirect to="/" /> }
         <Link to="/"><button>Back</button></Link>
         <div className="set__meta">
           <div className="set__meta-item">
@@ -40,8 +60,16 @@ class Set extends PureComponent {
           </div>
         </div>
         <div className="set__routes">
-          <Routes routes={routes} onAttempt={this.onAttempt} onComplete={this.onComplete} />
+          <Routes
+            routes={routes}
+            onAttempt={this.onAttempt}
+            onComplete={this.onComplete}
+            onDeattempt={this.onDeattempt}
+            onUncomplete={this.onUncomplete}
+          />
         </div>
+
+        <button className="set__delete" onClick={this.onDeleteSet}>Delete Set</button>
       </div>
     );
   }
@@ -66,6 +94,9 @@ function mapStateToProps(state, props) {
 const mapDispatchToProps = dispatch => ({
   attemptRoute: bindActionCreators(setActions.attemptRoute, dispatch),
   completeRoute: bindActionCreators(setActions.completeRoute, dispatch),
+  deattemptRoute: bindActionCreators(setActions.deattemptRoute, dispatch),
+  uncompleteRoute: bindActionCreators(setActions.uncompleteRoute, dispatch),
+  deleteSet: bindActionCreators(setActions.deleteSet, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Set);

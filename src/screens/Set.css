@@ -12,3 +12,7 @@
 .set__meta-item {
   flex: 0 1 50%;
 }
+
+.set__delete {
+  margin-top: 20px;
+}

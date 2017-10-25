@@ -23,49 +23,49 @@
   background-color: grey;
 }
 .color-option--wasp {
-  background-color: yellow;
-  background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, black 10px, black 20px);
+  background-color: #ED0;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #222 10px, #222 20px);
 }
 .color-option--seagul {
   background-color: blue;
-  background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, white 10px, white 20px);
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #EEE 10px, #EEE 20px);
 }
 .color-option--watermelon {
   background-color: pink;
-  background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, green 10px, green 20px);
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #6C2 10px, #6C2 20px);
 }
 .color-option--orange {
-  background-color: orange;
+  background-color: #F82;
 }
 .color-option--pink {
   background-color: pink;
 }
 .color-option--purple {
-  background-color: purple;
+  background-color: #92E;
 }
 .color-option--polka {
-  background-color: yellow;
-  background-image: radial-gradient(black 25%, transparent 26%), radial-gradient(black 25%, transparent 26%);
+  background-color: #ED0;
+  background-image: radial-gradient(#222 25%, transparent 26%), radial-gradient(#222 25%, transparent 26%);
   background-size: 20px 20px;
   background-position: 0 0, 10px, 10px;
 }
 .color-option--yurple {
-  background-color: purple;
-  background-image: radial-gradient(black 25%, transparent 26%), radial-gradient(black 25%, transparent 26%);
+  background-color: #92E;
+  background-image: radial-gradient(#ED0 25%, transparent 26%), radial-gradient(#ED0 25%, transparent 26%);
   background-size: 20px 20px;
   background-position: 0 0, 10px, 10px;
 }
 .color-option--black {
-  background-color: black;
+  background-color: #222;
 }
 .color-option--black.color-option--selected {
-  border-color: silver;
+  border-color: #CCC;
 }
 .color-option--white {
-  background-color: silver;
+  background-color: #EEE;
 }
 .color-option--woody {
-  background-color: brown;
+  background-color: #DA6;
 }
 
 .color-option input {
